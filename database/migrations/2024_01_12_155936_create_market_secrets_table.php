@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('market_secrets', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->integer('market_id')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->integer('market_id');
+            $table->string('pagarme_id')->nullable();
+            $table->string('pagarme_public_key')->nullable();
+            $table->string('pagarme_secret_api_key')->nullable();
             $table->boolean('status')->default(1);
-            $table->enum('type', ['admin', 'franqueado', 'estabelecimento', 'cliente']);
-            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('market_secrets');
     }
 };
