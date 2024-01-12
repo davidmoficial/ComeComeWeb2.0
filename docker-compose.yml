@@ -9,7 +9,7 @@ services:
     restart: unless-stopped
     tty: true
     volumes:
-      - ./comecome:/var/www
+      - ./:/var/www
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
       - setup-network
@@ -25,7 +25,7 @@ services:
       - '8080:80'
       - '443:443'
     volumes:
-      - ./comecome:/var/www
+      - ./:/var/www
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
     networks:
       - setup-network
@@ -44,10 +44,10 @@ services:
     ports:
       - '3306:3306'
     environment:
-      MYSQL_DATABASE: laravel
+      MYSQL_DATABASE: comecome
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: user
-      MYSQL_PASSWORD: password
+      MYSQL_PASSWORD:
 
   phpmyadmin:
     container_name: setup-phpmyadmin
