@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $pay = new PaymentController;
+// Route::get('/', function () {
+//     $pay = new PaymentController;
 
-    dd($pay->newClientPagarMe());
-});
+//     dd($pay->storeClient());
+// });
